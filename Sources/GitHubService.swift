@@ -61,21 +61,6 @@ final class GitHubService: ObservableObject, @unchecked Sendable {
         deviceFlowTask = nil
     }
 
-    func signInWithPAT(_ token: String) -> Bool {
-        let cleanToken = token.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !cleanToken.isEmpty else { return false }
-
-        let success = KeychainHelper.saveToken(cleanToken)
-        if success {
-            self.isAuthenticated = true
-            self.authError = nil
-            Task {
-                await fetchRuns()
-            }
-        }
-        return success
-    }
-
     func toggleRepoStar(id: String) {
         // Toggle in config manager (persists changes)
         ConfigManager.shared.toggleStar(id: id)

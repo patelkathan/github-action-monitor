@@ -9,7 +9,7 @@ A lightweight macOS menu bar app that keeps an eye on your GitHub Actions pipeli
 - Star repos to keep them pinned at the top and (optionally) limit notifications to just them
 - Desktop notifications when a pipeline finishes
 - Re-run a failed workflow run directly from the menu
-- Sign in with GitHub Device Flow, or paste a Personal Access Token
+- Sign in with GitHub Device Flow — no token to copy or manage
 - Launch at login, configurable refresh interval (or manual-only)
 
 ## Installing / Running
@@ -47,12 +47,9 @@ make bundle
 
 ## Authentication
 
-On first launch, sign in either with:
+On first launch, sign in with **GitHub Device Flow**: TrayFlow shows a one-time code, you approve it on github.com, and the resulting token is stored in the macOS Keychain (`com.kathanpatel.TrayFlow` service) — never written to disk in plaintext. TrayFlow makes no network calls other than to the GitHub API and sends no telemetry.
 
-- **GitHub Device Flow** (recommended) — opens github.com to authorize, no token to manage.
-- **Personal Access Token** — needs `repo` and `workflow` scopes.
-
-The token is stored in the macOS Keychain (`com.kathanpatel.TrayFlow` service) and never written to disk in plaintext. TrayFlow makes no network calls other than to the GitHub API and sends no telemetry.
+The default GitHub CLI OAuth Client ID is used (requests `repo` and `workflow` scopes). If you'd rather authorize via your own GitHub OAuth App (with Device Flow enabled), set a custom Client ID in Settings.
 
 ## Configuration
 

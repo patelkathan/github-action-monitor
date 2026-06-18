@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 - Menu bar dashboard of monitored GitHub repositories' workflow runs, with search and status filters.
 - Auto-detection of recently pushed repositories, with manual star/pin support.
-- GitHub Device Flow sign-in and Personal Access Token sign-in.
+- GitHub Device Flow sign-in.
 - Desktop notifications on pipeline completion (optionally scoped to starred repos).
 - Re-run failed workflow runs from the menu.
 - Launch-at-login and configurable refresh interval settings.
