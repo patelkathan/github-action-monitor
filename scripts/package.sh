@@ -15,10 +15,11 @@ cd "$ROOT_DIR"
 
 APP_NAME="TrayFlow"
 APP_BUNDLE="${APP_NAME}.app"
-BUILD_DIR=".build/release"
+# Multi-arch build output lands under .build/apple/Products/Release/, not .build/release/.
+BUILD_DIR=".build/apple/Products/Release"
 
-echo "=== Building release binary ==="
-swift build -c release
+echo "=== Building universal (arm64 + x86_64) release binary ==="
+swift build -c release --arch arm64 --arch x86_64
 
 echo "=== Assembling app bundle ==="
 rm -rf "$APP_BUNDLE"
