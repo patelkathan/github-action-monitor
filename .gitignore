@@ -1,0 +1,8 @@
+.DS_Store
+.build/
+.swiftpm/
+TrayFlow.app/
+TrayFlow.zip
+Resources/AppIcon.iconset/
+Resources/AppIcon.icns
+*.xcodeproj
