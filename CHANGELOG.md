@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Bounded GitHub OAuth device-flow polling (stops at code expiry instead of polling forever).
 - SwiftPM-based build (`Package.swift`), `Makefile`, signing/notarization script (`scripts/package.sh`), and programmatic app icon generator (`scripts/make-icon.swift`).
 - GitHub Actions CI workflow building debug and release configurations.
+- `scripts/make-dmg.sh` and `make dmg` target to package a drag-to-install DMG.
+- GitHub Actions release workflow that builds, packages, and attaches `TrayFlow.dmg` to a GitHub Release on version tag pushes.
 
 ### Fixed
 - Race condition allowing concurrent `fetchRuns()` calls to both pass the in-flight guard.

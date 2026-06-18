@@ -12,7 +12,13 @@ A lightweight macOS menu bar app that keeps an eye on your GitHub Actions pipeli
 - Sign in with GitHub Device Flow — no token to copy or manage
 - Launch at login, configurable refresh interval (or manual-only)
 
-## Installing / Running
+## Download
+
+Grab the latest `TrayFlow.dmg` from the [Releases page](../../releases), open it, and drag `TrayFlow.app` into `Applications`.
+
+> **Note:** Release builds are ad-hoc signed, not notarized (no Apple Developer account is wired into CI). On first launch, Gatekeeper will say the app "cannot be opened because it is from an unidentified developer." Right-click (or Control-click) `TrayFlow.app` → **Open** → **Open** to confirm — you only need to do this once. To build a notarized version yourself, see [Signing & Notarization](#signing--notarization).
+
+## Installing / Running From Source
 
 Requires macOS 13+ and Xcode (for the Swift toolchain).
 
@@ -28,6 +34,7 @@ Other useful targets:
 make build      # debug build via SwiftPM
 make release    # release build via SwiftPM
 make bundle     # build + package into TrayFlow.app (no launch)
+make dmg        # build + package into TrayFlow.dmg
 make icon       # regenerate Resources/AppIcon.icns
 make clean      # remove build artifacts
 ```
@@ -43,6 +50,17 @@ export NOTARY_PROFILE="your-notary-profile"   # set up via:
 #   --apple-id you@example.com --team-id TEAMID --password <app-specific-password>
 
 make bundle
+```
+
+The same `CODESIGN_IDENTITY` / `NOTARY_PROFILE` env vars can be set as repository secrets and exported in `.github/workflows/release.yml` to produce notarized releases from CI.
+
+## Releasing
+
+Push a version tag and the [release workflow](.github/workflows/release.yml) builds, packages, and attaches `TrayFlow.dmg` to a new GitHub Release automatically:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
 ## Authentication

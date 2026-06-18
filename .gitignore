@@ -3,6 +3,8 @@
 .swiftpm/
 TrayFlow.app/
 TrayFlow.zip
+TrayFlow.dmg
+.dmg-staging/
 Resources/AppIcon.iconset/
 Resources/AppIcon.icns
 *.xcodeproj
